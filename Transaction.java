@@ -1,7 +1,10 @@
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io.BufferedReader;
 
 public class Transaction {
 
@@ -74,5 +77,30 @@ public class Transaction {
     		System.err.println("Error saving transaction:(" + e.getMessage());
     	}
     }
+
+    // Task 2.3
+    //Method to display transaction history
+	public void displayTransactionHistory() {
+		// TODO Auto-generated method stub
+		File file = new File("transactins.txt");
+		if(!file.exists()) 
+		{
+			System.out.println("Sorry,No transaction history available.");
+			return;
+		}
+		
+		System.out.println("========== Transaction History=========");
+		try (BufferedReader reader = new BufferedReader(new FileReader(file)))
+		{
+			String line;
+			while ((line = reader.readLine()) != null)
+			{
+				System.out.println(line);
+			}
+		}catch (IOException e)
+		{
+			System.err.println("Ooops, Error reading transaction history:(" + e.getMessage());
+		}
+	}
 
 }
