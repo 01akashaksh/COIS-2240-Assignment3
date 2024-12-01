@@ -40,9 +40,14 @@ public class LibraryManagement {
                     
                     scanner.nextLine();
 
-                    Member newMember = new Member(id, name);
-                    library.addMember(newMember);
-                    System.out.println("Member added successfully.");
+                    Member newMember = new Member(id, name); 
+                    boolean isMemberAdded = library.addMember(newMember); // Task 2.4 Starts from here
+                    if (isMemberAdded)
+                    {System.out.println("Member added successfully ):");}
+                    else
+                    {
+                    	System.out.println("Failed to add member.Duplicate ID exits already.");
+                    }
                     break;
                 case 2:
                     System.out.print("Enter book ID: ");
@@ -53,8 +58,13 @@ public class LibraryManagement {
                     scanner.nextLine();
 
                     Book newBook = new Book(id, title);
-                    library.addBook(newBook);
-                    System.out.println("Book added to library successfully.");
+                    boolean isBookAdded = library.addBook(newBook); // Task 2.4 Starts from here
+
+                    if (isBookAdded) {
+                        System.out.println("Book added successfully.");
+                    } else {
+                        System.out.println("Failed to add book. Duplicate ID.exits");
+                    }
                     break;
                 case 3:
                 	System.out.println("\n--- Available Members ---");
