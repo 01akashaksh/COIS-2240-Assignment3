@@ -56,15 +56,23 @@ public class LibraryManagement {
                     String title = scanner.next();
                     
                     scanner.nextLine();
+                    
+                    //Task 3.1
+                    try {
+                    	 Book newBook = new Book(id, title);
+                         boolean isBookAdded = library.addBook(newBook); // Task 2.4 Starts from here
 
-                    Book newBook = new Book(id, title);
-                    boolean isBookAdded = library.addBook(newBook); // Task 2.4 Starts from here
-
-                    if (isBookAdded) {
-                        System.out.println("Book added successfully.");
-                    } else {
-                        System.out.println("Failed to add book. Duplicate ID.exits");
+                         if (isBookAdded) {
+                             System.out.println("Book added successfully.");
+                         } else {
+                             System.out.println("Failed to add book. Duplicate ID.exits");
+                         }
+                    	
+                    }catch(Exception e) {
+                    	System.out.println("Error adding book: " + e.getMessage());
                     }
+
+                   
                     break;
                 case 3:
                 	System.out.println("\n--- Available Members ---");
@@ -141,6 +149,8 @@ public class LibraryManagement {
                     break;
                 default:
                     System.out.println("Invalid choice! Please try again.");
+                    
+                    
             }
         }
     }
