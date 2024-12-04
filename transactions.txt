@@ -9,3 +9,13 @@
 2024-12-03 22:15:31 - Returning: Test member. returned Valid Book 1
 2024-12-03 22:16:56 - Borrowing: Test member. borrowed Valid Book 1
 2024-12-03 22:16:56 - Returning: Test member. returned Valid Book 1
+2024-12-03 22:31:19 - Borrowing: Test member. borrowed Valid Book 1
+2024-12-03 22:31:19 - Returning: Test member. returned Valid Book 1
+2024-12-03 22:46:28 - Borrowing: Test member. borrowed Valid Book 1
+2024-12-03 22:46:28 - Returning: Test member. returned Valid Book 1
+2024-12-03 22:52:56 - Borrowing: Test member. borrowed Valid Book 1
+2024-12-03 22:52:56 - Returning: Test member. returned Valid Book 1
+2024-12-03 22:54:48 - Borrowing: Test member. borrowed Valid Book 1
+2024-12-03 22:54:48 - Returning: Test member. returned Valid Book 1
+2024-12-03 23:09:17 - Borrowing: Test member. borrowed Valid Book 1
+2024-12-03 23:09:17 - Returning: Test member. returned Valid Book 1

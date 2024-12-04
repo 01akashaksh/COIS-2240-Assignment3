@@ -20,7 +20,9 @@ public class LibraryManagementTest {
         validBook1 = new Book(100, "Valid Book 1");
         validBook2 = new Book(999, "Valid Book 2");
         member = new Member(1,"Test member."); //Task 3.2
-        transaction = new Transaction();  //Task 3.2
+        
+        //Single instance of Transaction
+        transaction = Transaction.getTransaction();  //Task 3.2
     }
 
     //Task 3.1
@@ -97,27 +99,22 @@ public class LibraryManagementTest {
         assertFalse(transaction.returnBook(validBook1, member));
     }
     
- // Task 3.3 - Singleton Validation
+ // Task 3.3 Singleton Validation
     @Test
-    public void testSingletonTransaction() {
-        try {
-            // Get the constructor of the Transaction class
-            Constructor<Transaction> constructor = Transaction.class.getDeclaredConstructor();
-            
-            // Check if the constructor is private (Singleton pattern)
-            int modifiers = constructor.getModifiers();
-            assertEquals(Modifier.PRIVATE, modifiers);
-            
-            // Try to create a new instance using reflection, which should fail
-            constructor.setAccessible(true);
-            Transaction transaction1 = constructor.newInstance();
-            Transaction transaction2 = Transaction.getTransaction();
-            // Assuming getTransaction() is used for the Singleton instance
-            
-            // Verify that both instances refer to the same object (Singleton behavior)
-            assertSame(transaction1, transaction2);
-        } catch (Exception e) {
-            fail("Exception occurred while testing Singleton pattern: " + e.getMessage());
-        }
+    public void testSingletonTransaction() throws Exception {
+        // Access the constructor of the Transaction class
+        Constructor<Transaction> constructor = Transaction.class.getDeclaredConstructor();
+        
+        // Check if the constructor is private
+        assertEquals(Modifier.PRIVATE, constructor.getModifiers());
+        
+        // Attempt to create an instance using reflection
+        constructor.setAccessible(true);
+        // Bypass the private access
+        Transaction newTransactionInstance = constructor.newInstance();
+        
+        // Validate that the new instance is not the same as the singleton instance
+        assertNotSame(transaction, newTransactionInstance);
     }
-}
+
+   }

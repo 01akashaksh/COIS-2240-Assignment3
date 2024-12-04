@@ -13,7 +13,7 @@ public class Transaction {
 	private static Transaction instance;
 	
 	//Private constructor-Taks2.1
-	Transaction() {}
+	private Transaction() {}
 	
 	//Method to retrieve the single instance of Transaction-Task2.1
 	public static Transaction getTransaction()
