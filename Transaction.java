@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 
 public class Transaction {
 
@@ -68,9 +69,12 @@ public class Transaction {
     // Save transaction details in a file  when  the  program  exits,  from  borrowing  and  returning  transactions
     private void saveTransaction(String transactionDetails)
     {
-    	try(FileWriter writer = new FileWriter("transactions.txt",true))
+    	try
     	{
-    		writer.write(transactionDetails + "\n");
+    		BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.txt", true)); // Using John Video
+            writer.write(transactionDetails);
+            writer.write("\n");
+            writer.close();
     	}
     	catch(IOException e)
     	{
@@ -80,27 +84,17 @@ public class Transaction {
 
     // Task 2.3
     //Method to display transaction history
-	public void displayTransactionHistory() {
-		// TODO Auto-generated method stub
-		File file = new File("transactins.txt");
-		if(!file.exists()) 
-		{
-			System.out.println("Sorry,No transaction history available.");
-			return;
-		}
-		
-		System.out.println("========== Transaction History=========");
-		try (BufferedReader reader = new BufferedReader(new FileReader(file)))
-		{
-			String line;
-			while ((line = reader.readLine()) != null)
-			{
-				System.out.println(line);
-			}
-		}catch (IOException e)
-		{
-			System.err.println("Ooops, Error reading transaction history:(" + e.getMessage());
-		}
-	}
-
+    public void displayTransactionHistory() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("transactions.txt"));
+            String line;
+            System.out.println("\n--- Transaction History ---");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("Error reading transaction history: " + e.getMessage());
+        }
+    }
 }

@@ -11,11 +11,11 @@ public class Library {
     	if(findMemberById(member.getId())!= null) 
     	{
     		System.out.println(""+ member.getId() + "already exits.");
-    		return false;
+    		return false; // Same ID exists
     	}
     	
         members.add(member);
-        return true;
+        return true; // added successfully
     }
     
     // Add a new book to the library
@@ -24,10 +24,10 @@ public class Library {
     	if(findBookById(book.getId()) != null)
     	{
     		System.out.println("Error: Book with ID" + book.getId() + "already exists.");
-    		return false;
+    		return false;//Same ID exists
     	}
         books.add(book);
-        return true;
+        return true;// added successfully
     }
 
     // Find a member by ID

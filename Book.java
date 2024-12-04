@@ -3,7 +3,12 @@ public class Book {
     private String title;
     private boolean available;
 
-    public Book(int id, String title) {
+    //Task 3.1
+    public Book(int id, String title) throws Exception {
+    	if(!isValidId(id))
+    	{
+    		throw new Exception("Invalid book ID. Pleae try again" + id);
+    	}
         this.id = id;
         this.title = title;
         this.available = true;
