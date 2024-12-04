@@ -4,6 +4,8 @@ public class Book {
     private boolean available;
 
     //Task 3.1
+    // calling  isValidId  before  processing  book  details  and  throw  an 
+    // exception if the  ID  is invalid while making sure the constructor’s  declaration has  throws Exception  . 
     public Book(int id, String title) throws Exception {
     	if(!isValidId(id))
     	{

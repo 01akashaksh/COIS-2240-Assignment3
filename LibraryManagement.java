@@ -58,6 +58,9 @@ public class LibraryManagement {
                     scanner.nextLine();
                     
                     //Task 3.1
+                    //Modifying  the  line  library.addBook(new  Book(id,  tle));  and  make  it 
+                    //handle  the  exceptio  by  wrapping  it  in  a  try-catch  block  and  displaying  an  error  message  if 
+                    //an invalid  ID  is provided. 
                     try {
                     	 Book newBook = new Book(id, title);
                          boolean isBookAdded = library.addBook(newBook); // Task 2.4 Starts from here
