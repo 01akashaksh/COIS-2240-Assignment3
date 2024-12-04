@@ -5,3 +5,7 @@
 2024-12-03 19:14:42 - Borrowing: Anne borrowed Math
 2024-12-03 21:49:55 - Borrowing: Test member. borrowed Valid Book 1
 2024-12-03 21:49:55 - Returning: Test member. returned Valid Book 1
+2024-12-03 22:15:31 - Borrowing: Test member. borrowed Valid Book 1
+2024-12-03 22:15:31 - Returning: Test member. returned Valid Book 1
+2024-12-03 22:16:56 - Borrowing: Test member. borrowed Valid Book 1
+2024-12-03 22:16:56 - Returning: Test member. returned Valid Book 1

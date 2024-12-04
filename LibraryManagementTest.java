@@ -3,6 +3,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+
 public class LibraryManagementTest {
     private Book validBook1; //Task3.1
     private Book validBook2; //Task3.1
@@ -92,5 +95,29 @@ public class LibraryManagementTest {
 
         // Attempt to return the book again
         assertFalse(transaction.returnBook(validBook1, member));
+    }
+    
+ // Task 3.3 - Singleton Validation
+    @Test
+    public void testSingletonTransaction() {
+        try {
+            // Get the constructor of the Transaction class
+            Constructor<Transaction> constructor = Transaction.class.getDeclaredConstructor();
+            
+            // Check if the constructor is private (Singleton pattern)
+            int modifiers = constructor.getModifiers();
+            assertEquals(Modifier.PRIVATE, modifiers);
+            
+            // Try to create a new instance using reflection, which should fail
+            constructor.setAccessible(true);
+            Transaction transaction1 = constructor.newInstance();
+            Transaction transaction2 = Transaction.getTransaction();
+            // Assuming getTransaction() is used for the Singleton instance
+            
+            // Verify that both instances refer to the same object (Singleton behavior)
+            assertSame(transaction1, transaction2);
+        } catch (Exception e) {
+            fail("Exception occurred while testing Singleton pattern: " + e.getMessage());
+        }
     }
 }
