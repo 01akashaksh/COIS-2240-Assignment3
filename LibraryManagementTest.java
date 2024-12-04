@@ -4,8 +4,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LibraryManagementTest {
-    private Book validBook1;
-    private Book validBook2;
+    private Book validBook1; //Task3.1
+    private Book validBook2; //Task3.1
+    private Member member;   //Task 3.2
+    private Transaction transaction; //Task 3.2
     
     
     //Task3.1
@@ -14,6 +16,8 @@ public class LibraryManagementTest {
         // Setting up valid Book objects
         validBook1 = new Book(100, "Valid Book 1");
         validBook2 = new Book(999, "Valid Book 2");
+        member = new Member(1,"Test member."); //Task 3.2
+        transaction = new Transaction();  //Task 3.2
     }
 
     //Task 3.1
@@ -66,5 +70,27 @@ public class LibraryManagementTest {
         } catch (Exception e) {
             fail("Unexpected exception: " + e.getMessage());
         }
+    }
+    
+    //Task 3.2
+    
+    @Test
+    public void testBorrowReturn() {
+        // Ensure the book is initially available
+        assertTrue(validBook1.isAvailable());
+
+        // Borrow the book
+        assertTrue(transaction.borrowBook(validBook1, member));
+        assertFalse(validBook1.isAvailable()); // Ensure the book is unavailable
+
+        // Attempt to borrow the same book again
+        assertFalse(transaction.borrowBook(validBook1, member));
+
+        // Return the book
+        assertTrue(transaction.returnBook(validBook1, member));
+        assertTrue(validBook1.isAvailable()); // Ensure the book is available again
+
+        // Attempt to return the book again
+        assertFalse(transaction.returnBook(validBook1, member));
     }
 }

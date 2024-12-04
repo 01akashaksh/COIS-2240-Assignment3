@@ -13,7 +13,7 @@ public class Transaction {
 	private static Transaction instance;
 	
 	//Private constructor-Taks2.1
-	private Transaction() {}
+	Transaction() {}
 	
 	//Method to retrieve the single instance of Transaction-Task2.1
 	public static Transaction getTransaction()
@@ -44,7 +44,7 @@ public class Transaction {
 
     // Perform the returning of a book
   //removed static to make it instance method
-    public void returnBook(Book book, Member member) {
+    public boolean returnBook(Book book, Member member) {
         if (member.getBorrowedBooks().contains(book)) {
             member.returnBook(book);
             book.returnBook();
@@ -53,8 +53,10 @@ public class Transaction {
          // Task 2.2
             //Save to file
             saveTransaction(transactionDetails);
+            return true; //Task3.2 Return Success
         } else {
             System.out.println("This book was not borrowed by the member.");
+            return false; //Task3.2 Return failure
         }
     }
 
